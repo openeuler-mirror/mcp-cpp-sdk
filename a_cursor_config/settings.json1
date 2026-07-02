@@ -1,0 +1,6 @@
+{
+    "cmake.sourceDirectory": "/Users/apple/wangjiandong/go_mcp/cpp-mcp",
+    "files.associations": {
+        "valarray": "cpp"
+    }
+}
