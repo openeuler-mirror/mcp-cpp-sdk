@@ -1,0 +1,113 @@
+# Build directories
+build/
+*/build/
+**/build/
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+!CMakeLists.txt
+
+# Compiled object files
+*.o
+*.obj
+*.lo
+*.slo
+*.ko
+*.elf
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Libraries
+*.a
+*.la
+*.lo
+*.dll
+*.so
+*.dylib
+*.lib
+
+# IDE files
+.vscode/
+.vs/
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Log files
+*.log
+*.log.*
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Coverage reports
+*.gcov
+*.gcno
+*.gcda
+
+# Profiling data
+*.prof
+*.gprof
+
+# Core dumps
+core
+core.*
+
+# Package files
+*.tar.gz
+*.zip
+*.rar
+*.7z
+
+# Backup files
+*.bak
+*.backup
+*.orig
+
+# Test results
+test_results/
+test_output/
+
+# SSL certificates and keys (should not be committed)
+**/certs/
+*.key
+*.crt
+*.pem
+*.csr
+*.srl
+!**/README_CERTIFICATES.md
+
+*.trae/
+*.gitignore/
