@@ -65,7 +65,7 @@ Logger& logger = Logger::getInstance();
 
 // 配置日志系统
 LogConfig config;
-config.level = LogLevel::DEBUG_LEVEL;
+config.level = LogLevel::DEBUG;
 config.target = LogTarget::BOTH;  // 同时输出到控制台和文件
 config.file_path = "app.log";
 config.enable_timestamp = true;
@@ -75,19 +75,18 @@ config.enable_file_location = true;
 logger.initialize(config);
 ```
 
-### 2. 使用便捷宏
+### 2. 使用模块日志记录器（推荐方式）
 
 ```cpp
-// 基本日志宏
-MCP_LOG_DEBUG("调试信息");
-MCP_LOG_INFO("信息日志");
-MCP_LOG_WARNING("警告信息");
-MCP_LOG_ERROR("错误信息");
-MCP_LOG_FATAL("致命错误");
+// 获取模块日志记录器
+auto module_logger_ = Logger::getInstance().getModuleLogger("your_module");
 
-// 模块化日志宏
-MCP_MODULE_LOG_INFO("Network", "网络连接已建立");
-MCP_MODULE_LOG_ERROR("Database", "数据库连接失败");
+// 使用模块日志记录器
+module_logger_->debug("调试信息");
+module_logger_->info("信息日志");
+module_logger_->warning("警告信息");
+module_logger_->error("错误信息");
+module_logger_->fatal("致命错误");
 ```
 
 ### 3. 使用模块化日志记录器
@@ -139,7 +138,7 @@ struct LogConfig {
 
 ### 日志级别
 
-- `DEBUG_LEVEL`: 调试信息
+- `DEBUG`: 调试信息
 - `INFO`: 一般信息
 - `WARNING`: 警告信息
 - `ERROR`: 错误信息
