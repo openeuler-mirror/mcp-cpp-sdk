@@ -108,6 +108,3 @@ test_output/
 *.csr
 *.srl
 !**/README_CERTIFICATES.md
-
-*.trae/
-*.gitignore/
