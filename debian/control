@@ -1,0 +1,69 @@
+Source: mcp-sdk
+Section: libs
+Priority: optional
+Maintainer: MCP SDK Team <support@mcp-sdk.com>
+Build-Depends: debhelper-compat (= 12),
+               cmake,
+               pkg-config,
+               libssl-dev,
+               libgtest-dev,
+               libgmock-dev
+# 注意：构建时使用 /usr/local/lib64/ 下的 OpenSSL 库
+Standards-Version: 4.6.2
+Homepage: https://github.com/mcp-sdk/cpp-mcp-sdk
+Vcs-Browser: https://github.com/mcp-sdk/cpp-mcp-sdk
+Vcs-Git: https://github.com/mcp-sdk/cpp-mcp-sdk.git
+
+Package: libmcp-sdk
+Architecture: any
+Multi-Arch: same
+Depends: ${shlibs:Depends}, ${misc:Depends}, libssl, libcrypto3
+Description: MCP SDK - Model Context Protocol C++ SDK runtime libraries
+ This package provides the MCP (Model Context Protocol) C++ SDK shared libraries
+ including both client and server components. The SDK enables communication
+ between AI models and external tools through a standardized protocol.
+ .
+ Features:
+  - Client library for connecting to MCP servers
+  - Server library for implementing MCP services
+  - Support for multiple transport protocols (HTTP, HTTPS, IPC)
+  - Comprehensive logging and error handling
+  - Cross-platform compatibility
+ .
+ This package contains the shared libraries needed to run applications
+ using the MCP SDK.
+
+Package: libmcp-sdk-dev
+Architecture: any
+Multi-Arch: same
+Section: libdevel
+Depends: ${shlibs:Depends}, ${misc:Depends}, libmcp-sdk
+Description: MCP SDK - Model Context Protocol C++ SDK development files
+ This package provides the MCP (Model Context Protocol) C++ SDK development
+ files including header files and CMake configuration files needed to
+ develop applications using the MCP SDK.
+ .
+ Features:
+  - Complete header files for both client and server APIs
+  - CMake configuration files for easy integration
+  - Example programs and documentation
+  - Cross-platform compatibility
+ .
+ This package contains the development files needed to build applications
+ using the MCP SDK.
+
+Package: mcp-sdk-tools
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libmcp-sdk
+Description: MCP SDK - Model Context Protocol C++ SDK tools and examples
+ This package provides example programs and tools for the MCP (Model Context Protocol)
+ C++ SDK. These tools demonstrate how to use the SDK for both client and server
+ implementations.
+ .
+ Features:
+  - Example client programs for HTTP, HTTPS, and IPC protocols
+  - Example server implementations
+  - Filesystem server example
+  - Test programs and utilities
+ .
+ This package contains the example programs and tools for the MCP SDK.
