@@ -11,31 +11,31 @@ public:
     std::vector<std::string> received_messages;
     std::vector<std::string> received_errors;
     
-    void on_message(const Message& message) override {
+    void onMessage(const Message& message) override {
         received_messages.push_back(message.content);
     }
     
-    void on_error(const std::string& error) override {
+    void onError(const std::string& error) override {
         received_errors.push_back(error);
     }
 };
 
-void test_basic_functionality() {
+void testBasicFunctionality() {
     std::cout << "Testing basic functionality..." << std::endl;
     
     PipeCommunication pipe_comm;
     auto handler = std::make_shared<TestMessageHandler>();
-    pipe_comm.set_message_handler(handler);
+    pipe_comm.setMessageHandler(handler);
     
     // 测试未启动状态
-    assert(!pipe_comm.is_running());
-    assert(pipe_comm.get_process_id() == -1);
-    assert(!pipe_comm.is_process_alive());
+    assert(!pipe_comm.isRunning());
+    assert(pipe_comm.getProcessId() == -1);
+    assert(!pipe_comm.isProcessAlive());
     
     std::cout << "Basic functionality test passed" << std::endl;
 }
 
-void test_pipe_creation() {
+void testPipeCreation() {
     std::cout << "Testing pipe creation..." << std::endl;
     
     PipeCommunication pipe_comm;
@@ -46,30 +46,30 @@ void test_pipe_creation() {
     // 测试启动
     bool started = pipe_comm.start(config);
     if (started) {
-        assert(pipe_comm.is_running());
-        assert(pipe_comm.get_process_id() > 0);
+        assert(pipe_comm.isRunning());
+        assert(pipe_comm.getProcessId() > 0);
         
         // 等待进程启动
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
         
         // 测试进程状态
-        bool alive = pipe_comm.is_process_alive();
+        bool alive = pipe_comm.isProcessAlive();
         std::cout << "Process alive: " << alive << std::endl;
         
         // 停止
         pipe_comm.stop();
-        assert(!pipe_comm.is_running());
+        assert(!pipe_comm.isRunning());
     }
     
     std::cout << "Pipe creation test completed" << std::endl;
 }
 
-void test_message_sending() {
+void testMessageSending() {
     std::cout << "Testing message sending..." << std::endl;
     
     PipeCommunication pipe_comm;
     auto handler = std::make_shared<TestMessageHandler>();
-    pipe_comm.set_message_handler(handler);
+    pipe_comm.setMessageHandler(handler);
     
     PipeConfig config;
     config.command = "cat"; // 简单的回显命令
@@ -81,7 +81,7 @@ void test_message_sending() {
         
         // 发送消息
         std::string test_message = "Hello, World!";
-        bool sent = pipe_comm.send_message(test_message);
+        bool sent = pipe_comm.sendMessage(test_message);
         std::cout << "Message sent: " << sent << std::endl;
         
         // 等待消息处理
@@ -98,9 +98,9 @@ int main() {
     std::cout << "Starting pipe communication tests..." << std::endl;
     
     try {
-        test_basic_functionality();
-        test_pipe_creation();
-        test_message_sending();
+        testBasicFunctionality();
+        testPipeCreation();
+        testMessageSending();
         
         std::cout << "All tests passed!" << std::endl;
         return 0;
