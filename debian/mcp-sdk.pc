@@ -1,0 +1,21 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: MCP SDK
+Description: Model Context Protocol C++ SDK
+Version: 1.0.0
+URL: https://github.com/mcp-sdk/cpp-mcp-sdk
+
+# 编译时需要的头文件路径
+Cflags: -I${includedir}/mcp_sdk
+
+# 链接时需要的库文件
+Libs: -L${libdir} -lmcp_client -lmcp_server -L/usr/local/lib64
+
+# 依赖的第三方库
+Requires: openssl
+
+# 额外的链接库（如果需要）- 使用 /usr/local/lib64/ 下的 OpenSSL 库
+Libs.private: -L/usr/local/lib64 -lssl -lcrypto -lpthread
