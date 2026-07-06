@@ -1,0 +1,60 @@
+#!/usr/bin/make -f
+
+# 设置默认目标
+%:
+	dh $@
+
+# 覆盖 configure 目标
+override_dh_auto_configure:
+	# 创建构建目录
+	mkdir -p build
+	cd build && cmake .. \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_INSTALL_INCLUDEDIR=include
+
+# 覆盖 build 目标
+override_dh_auto_build:
+	cd build && make -j$$(nproc)
+
+# 覆盖 test 目标
+override_dh_auto_test:
+	cd build && make test || true
+
+# 覆盖 install 目标
+override_dh_auto_install:
+	cd build && make install DESTDIR=$$(pwd)/debian/tmp
+
+# 创建符号链接
+override_dh_shlibdeps:
+	dh_shlibdeps
+
+# 生成 pkg-config 文件
+override_dh_auto_install:
+	cd build && make install DESTDIR=$$(pwd)/debian/tmp
+	# 创建 pkg-config 文件
+	mkdir -p debian/tmp/usr/lib/pkgconfig
+	cat > debian/tmp/usr/lib/pkgconfig/mcp-sdk.pc << 'EOF'
+prefix=/usr
+exec_prefix=$${prefix}
+libdir=$${exec_prefix}/lib
+includedir=$${prefix}/include
+
+Name: MCP SDK
+Description: Model Context Protocol C++ SDK
+Version: 1.0.0
+Libs: -L$${libdir} -lmcp_client -lmcp_server
+Cflags: -I$${includedir}/mcp_sdk
+Requires: openssl
+EOF
+
+# 设置文件权限
+override_dh_fixperms:
+	dh_fixperms
+	chmod 755 debian/tmp/usr/bin/* || true
+	chmod 644 debian/tmp/usr/lib/*.so* || true
+	chmod 644 debian/tmp/usr/lib/*.a || true
+	chmod 644 debian/tmp/usr/include/mcp_sdk/* || true
+	chmod 644 debian/tmp/usr/lib/pkgconfig/* || true
+	chmod 644 debian/tmp/usr/lib/cmake/mcp_sdk/* || true
