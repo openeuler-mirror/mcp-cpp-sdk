@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e
+
+# 更新动态链接库缓存
+if command -v ldconfig >/dev/null 2>&1; then
+    ldconfig
+fi
+
+# 设置库文件权限
+chmod 755 /usr/lib/libmcp_client.so* 2>/dev/null || true
+chmod 755 /usr/lib/libmcp_server.so* 2>/dev/null || true
+
+echo "MCP SDK libraries installed successfully."
+echo "You can now link against libmcp_client and libmcp_server in your applications."
