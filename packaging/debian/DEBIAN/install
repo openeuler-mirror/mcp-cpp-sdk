@@ -1,0 +1,12 @@
+# 运行时库安装规则
+libmcp-sdk:
+usr/lib/*.so*
+usr/lib/*.so.*
+usr/bin/mcp_*
+
+# 开发文件安装规则  
+libmcp-sdk-dev:
+usr/include/mcp_sdk/
+usr/lib/*.a
+usr/lib/cmake/mcp_sdk/
+usr/lib/pkgconfig/
