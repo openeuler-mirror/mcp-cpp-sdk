@@ -1,0 +1,673 @@
+{
+  "project_info": {
+    "name": "mcp_sdk",
+    "version": "3.10",
+    "description": "基于model Context Protocol 实现的一个c++的协议和简单demo",
+    "path": "/Users/apple/wangjiandong/go_mcp/cpp_mcp_sdk",
+    "analysis_time": "2025-09-29T13:58:17.704728"
+  },
+  "file_stats": {
+    "code_stats.sh": {
+      "language": "Shell",
+      "module": "root",
+      "size": 10363,
+      "total_lines": 328,
+      "code_lines": 233,
+      "comment_lines": 44,
+      "blank_lines": 51
+    },
+    "CMakeLists.txt": {
+      "language": "Text",
+      "module": "root",
+      "size": 8783,
+      "total_lines": 290,
+      "code_lines": 219,
+      "comment_lines": 28,
+      "blank_lines": 43
+    },
+    "README.md": {
+      "language": "Markdown",
+      "module": "root",
+      "size": 322,
+      "total_lines": 22,
+      "code_lines": 10,
+      "comment_lines": 3,
+      "blank_lines": 9
+    },
+    "code_stats.py": {
+      "language": "Python",
+      "module": "root",
+      "size": 17491,
+      "total_lines": 459,
+      "code_lines": 345,
+      "comment_lines": 43,
+      "blank_lines": 71
+    },
+    "STATS_README.md": {
+      "language": "Markdown",
+      "module": "root",
+      "size": 5083,
+      "total_lines": 227,
+      "code_lines": 149,
+      "comment_lines": 29,
+      "blank_lines": 49
+    },
+    "net/API_DOCUMENTATION.md": {
+      "language": "Markdown",
+      "module": "net",
+      "size": 16883,
+      "total_lines": 510,
+      "code_lines": 321,
+      "comment_lines": 95,
+      "blank_lines": 94
+    },
+    "net/CMakeLists.txt": {
+      "language": "Text",
+      "module": "net",
+      "size": 1836,
+      "total_lines": 80,
+      "code_lines": 44,
+      "comment_lines": 16,
+      "blank_lines": 20
+    },
+    "net/netio.cpp": {
+      "language": "C++",
+      "module": "net",
+      "size": 21832,
+      "total_lines": 662,
+      "code_lines": 532,
+      "comment_lines": 22,
+      "blank_lines": 108
+    },
+    "net/netio.h": {
+      "language": "C/C++ Header",
+      "module": "net",
+      "size": 5153,
+      "total_lines": 190,
+      "code_lines": 116,
+      "comment_lines": 41,
+      "blank_lines": 33
+    },
+    "net/netio_mcp_demo.cpp": {
+      "language": "C++",
+      "module": "net",
+      "size": 7195,
+      "total_lines": 189,
+      "code_lines": 133,
+      "comment_lines": 29,
+      "blank_lines": 27
+    },
+    "net/README.md": {
+      "language": "Markdown",
+      "module": "net",
+      "size": 6890,
+      "total_lines": 286,
+      "code_lines": 190,
+      "comment_lines": 36,
+      "blank_lines": 60
+    },
+    "net/localhost_mcp_demo.cpp": {
+      "language": "C++",
+      "module": "net",
+      "size": 9086,
+      "total_lines": 254,
+      "code_lines": 184,
+      "comment_lines": 35,
+      "blank_lines": 35
+    },
+    "transport/ipc_example.cpp": {
+      "language": "C++",
+      "module": "transport",
+      "size": 7544,
+      "total_lines": 182,
+      "code_lines": 130,
+      "comment_lines": 28,
+      "blank_lines": 24
+    },
+    "transport/API_DOCUMENTATION.md": {
+      "language": "Markdown",
+      "module": "transport",
+      "size": 26039,
+      "total_lines": 763,
+      "code_lines": 505,
+      "comment_lines": 126,
+      "blank_lines": 132
+    },
+    "transport/CMakeLists.txt": {
+      "language": "Text",
+      "module": "transport",
+      "size": 8241,
+      "total_lines": 293,
+      "code_lines": 214,
+      "comment_lines": 36,
+      "blank_lines": 43
+    },
+    "transport/sse_https_example.cpp": {
+      "language": "C++",
+      "module": "transport",
+      "size": 8855,
+      "total_lines": 205,
+      "code_lines": 144,
+      "comment_lines": 32,
+      "blank_lines": 29
+    },
+    "transport/transport_example.cpp": {
+      "language": "C++",
+      "module": "transport",
+      "size": 20673,
+      "total_lines": 510,
+      "code_lines": 371,
+      "comment_lines": 61,
+      "blank_lines": 78
+    },
+    "transport/transport.cpp": {
+      "language": "C++",
+      "module": "transport",
+      "size": 37809,
+      "total_lines": 1026,
+      "code_lines": 837,
+      "comment_lines": 41,
+      "blank_lines": 148
+    },
+    "transport/sse_http_example.cpp": {
+      "language": "C++",
+      "module": "transport",
+      "size": 8669,
+      "total_lines": 205,
+      "code_lines": 144,
+      "comment_lines": 32,
+      "blank_lines": 29
+    },
+    "transport/replace_cout.py": {
+      "language": "Python",
+      "module": "transport",
+      "size": 3258,
+      "total_lines": 83,
+      "code_lines": 55,
+      "comment_lines": 11,
+      "blank_lines": 17
+    },
+    "transport/test_log_integration.cpp": {
+      "language": "C++",
+      "module": "transport",
+      "size": 1132,
+      "total_lines": 34,
+      "code_lines": 23,
+      "comment_lines": 5,
+      "blank_lines": 6
+    },
+    "transport/transport.h": {
+      "language": "C/C++ Header",
+      "module": "transport",
+      "size": 9157,
+      "total_lines": 266,
+      "code_lines": 146,
+      "comment_lines": 72,
+      "blank_lines": 48
+    },
+    "server/mcp_protocol.h": {
+      "language": "C/C++ Header",
+      "module": "server",
+      "size": 556,
+      "total_lines": 18,
+      "code_lines": 0,
+      "comment_lines": 15,
+      "blank_lines": 3
+    },
+    "server/mcp_server.h": {
+      "language": "C/C++ Header",
+      "module": "server",
+      "size": 2613,
+      "total_lines": 94,
+      "code_lines": 43,
+      "comment_lines": 31,
+      "blank_lines": 20
+    },
+    "server/mcp_server.cpp": {
+      "language": "C++",
+      "module": "server",
+      "size": 12358,
+      "total_lines": 410,
+      "code_lines": 304,
+      "comment_lines": 24,
+      "blank_lines": 82
+    },
+    "common/httplib.h": {
+      "language": "C/C++ Header",
+      "module": "common",
+      "size": 350597,
+      "total_lines": 10444,
+      "code_lines": 7899,
+      "comment_lines": 909,
+      "blank_lines": 1636
+    },
+    "common/json.hpp": {
+      "language": "C++ Header",
+      "module": "common",
+      "size": 920255,
+      "total_lines": 24766,
+      "code_lines": 15133,
+      "comment_lines": 6463,
+      "blank_lines": 3170
+    },
+    "common/base64.hpp": {
+      "language": "C++ Header",
+      "module": "common",
+      "size": 12878,
+      "total_lines": 392,
+      "code_lines": 187,
+      "comment_lines": 138,
+      "blank_lines": 67
+    },
+    "log/CMakeLists.txt": {
+      "language": "Text",
+      "module": "log",
+      "size": 2317,
+      "total_lines": 92,
+      "code_lines": 59,
+      "comment_lines": 17,
+      "blank_lines": 16
+    },
+    "log/README.md": {
+      "language": "Markdown",
+      "module": "log",
+      "size": 5505,
+      "total_lines": 199,
+      "code_lines": 115,
+      "comment_lines": 34,
+      "blank_lines": 50
+    },
+    "log/logger.cpp": {
+      "language": "C++",
+      "module": "log",
+      "size": 10042,
+      "total_lines": 322,
+      "code_lines": 237,
+      "comment_lines": 16,
+      "blank_lines": 69
+    },
+    "log/logger_example.cpp": {
+      "language": "C++",
+      "module": "log",
+      "size": 5710,
+      "total_lines": 184,
+      "code_lines": 121,
+      "comment_lines": 20,
+      "blank_lines": 43
+    },
+    "log/logger.h": {
+      "language": "C/C++ Header",
+      "module": "log",
+      "size": 5670,
+      "total_lines": 141,
+      "code_lines": 79,
+      "comment_lines": 39,
+      "blank_lines": 23
+    },
+    "ipc/API_DOCUMENTATION.md": {
+      "language": "Markdown",
+      "module": "ipc",
+      "size": 16804,
+      "total_lines": 466,
+      "code_lines": 310,
+      "comment_lines": 78,
+      "blank_lines": 78
+    },
+    "ipc/CMakeLists.txt": {
+      "language": "Text",
+      "module": "ipc",
+      "size": 1917,
+      "total_lines": 70,
+      "code_lines": 41,
+      "comment_lines": 14,
+      "blank_lines": 15
+    },
+    "ipc/test/pipe_communication_test.cpp": {
+      "language": "C++",
+      "module": "ipc",
+      "size": 3120,
+      "total_lines": 111,
+      "code_lines": 71,
+      "comment_lines": 14,
+      "blank_lines": 26
+    },
+    "ipc/include/mcp_protocol_messages.h": {
+      "language": "C/C++ Header",
+      "module": "ipc",
+      "size": 16324,
+      "total_lines": 547,
+      "code_lines": 465,
+      "comment_lines": 33,
+      "blank_lines": 49
+    },
+    "ipc/include/pipe_communication.h": {
+      "language": "C/C++ Header",
+      "module": "ipc",
+      "size": 4208,
+      "total_lines": 169,
+      "code_lines": 98,
+      "comment_lines": 43,
+      "blank_lines": 28
+    },
+    "ipc/examples/pipe_communication_example.cpp": {
+      "language": "C++",
+      "module": "ipc",
+      "size": 20168,
+      "total_lines": 491,
+      "code_lines": 361,
+      "comment_lines": 50,
+      "blank_lines": 80
+    },
+    "ipc/src/pipe_communication.cpp": {
+      "language": "C++",
+      "module": "ipc",
+      "size": 24816,
+      "total_lines": 768,
+      "code_lines": 571,
+      "comment_lines": 73,
+      "blank_lines": 124
+    },
+    "mcp_protocol/API_DOCUMENTATION.md": {
+      "language": "Markdown",
+      "module": "mcp_protocol",
+      "size": 21747,
+      "total_lines": 677,
+      "code_lines": 454,
+      "comment_lines": 107,
+      "blank_lines": 116
+    },
+    "mcp_protocol/CMakeLists.txt": {
+      "language": "Text",
+      "module": "mcp_protocol",
+      "size": 3428,
+      "total_lines": 121,
+      "code_lines": 86,
+      "comment_lines": 17,
+      "blank_lines": 18
+    },
+    "mcp_protocol/mcp_protocol_core.h": {
+      "language": "C/C++ Header",
+      "module": "mcp_protocol",
+      "size": 10772,
+      "total_lines": 362,
+      "code_lines": 267,
+      "comment_lines": 44,
+      "blank_lines": 51
+    },
+    "mcp_protocol/mcp_message.h": {
+      "language": "C/C++ Header",
+      "module": "mcp_protocol",
+      "size": 5127,
+      "total_lines": 206,
+      "code_lines": 135,
+      "comment_lines": 34,
+      "blank_lines": 37
+    },
+    "mcp_protocol/mcp_protocol_core.cpp": {
+      "language": "C++",
+      "module": "mcp_protocol",
+      "size": 2287,
+      "total_lines": 79,
+      "code_lines": 50,
+      "comment_lines": 18,
+      "blank_lines": 11
+    },
+    "client/API_DOCUMENTATION.md": {
+      "language": "Markdown",
+      "module": "client",
+      "size": 11825,
+      "total_lines": 353,
+      "code_lines": 220,
+      "comment_lines": 66,
+      "blank_lines": 67
+    },
+    "client/CMakeLists.txt": {
+      "language": "Text",
+      "module": "client",
+      "size": 9257,
+      "total_lines": 299,
+      "code_lines": 225,
+      "comment_lines": 33,
+      "blank_lines": 41
+    },
+    "client/mcp_client.cpp": {
+      "language": "C++",
+      "module": "client",
+      "size": 27022,
+      "total_lines": 714,
+      "code_lines": 529,
+      "comment_lines": 52,
+      "blank_lines": 133
+    },
+    "client/mcp_client_https_demo.cpp": {
+      "language": "C++",
+      "module": "client",
+      "size": 15927,
+      "total_lines": 338,
+      "code_lines": 264,
+      "comment_lines": 38,
+      "blank_lines": 36
+    },
+    "client/mcp_client.h": {
+      "language": "C/C++ Header",
+      "module": "client",
+      "size": 2753,
+      "total_lines": 91,
+      "code_lines": 41,
+      "comment_lines": 31,
+      "blank_lines": 19
+    },
+    "client/mcp_client_ipc_demo.cpp": {
+      "language": "C++",
+      "module": "client",
+      "size": 9706,
+      "total_lines": 232,
+      "code_lines": 176,
+      "comment_lines": 29,
+      "blank_lines": 27
+    },
+    "client/mcp_client_http_demo.cpp": {
+      "language": "C++",
+      "module": "client",
+      "size": 15742,
+      "total_lines": 338,
+      "code_lines": 264,
+      "comment_lines": 38,
+      "blank_lines": 36
+    }
+  },
+  "language_stats": {
+    "Shell": {
+      "files": 1,
+      "total_lines": 328,
+      "code_lines": 233,
+      "comment_lines": 44,
+      "blank_lines": 51
+    },
+    "Text": {
+      "files": 7,
+      "total_lines": 1245,
+      "code_lines": 888,
+      "comment_lines": 161,
+      "blank_lines": 196
+    },
+    "Markdown": {
+      "files": 9,
+      "total_lines": 3503,
+      "code_lines": 2274,
+      "comment_lines": 574,
+      "blank_lines": 655
+    },
+    "Python": {
+      "files": 2,
+      "total_lines": 542,
+      "code_lines": 400,
+      "comment_lines": 54,
+      "blank_lines": 88
+    },
+    "C++": {
+      "files": 20,
+      "total_lines": 7254,
+      "code_lines": 5446,
+      "comment_lines": 657,
+      "blank_lines": 1151
+    },
+    "C/C++ Header": {
+      "files": 11,
+      "total_lines": 12528,
+      "code_lines": 9289,
+      "comment_lines": 1292,
+      "blank_lines": 1947
+    },
+    "C++ Header": {
+      "files": 2,
+      "total_lines": 25158,
+      "code_lines": 15320,
+      "comment_lines": 6601,
+      "blank_lines": 3237
+    }
+  },
+  "module_stats": {
+    "root": {
+      "files": 5,
+      "total_lines": 1326,
+      "code_lines": 956,
+      "comment_lines": 147,
+      "blank_lines": 223,
+      "languages": [
+        "Shell",
+        "Python",
+        "Markdown",
+        "Text"
+      ]
+    },
+    "net": {
+      "files": 7,
+      "total_lines": 2171,
+      "code_lines": 1520,
+      "comment_lines": 274,
+      "blank_lines": 377,
+      "languages": [
+        "Markdown",
+        "C++",
+        "Text",
+        "C/C++ Header"
+      ]
+    },
+    "transport": {
+      "files": 10,
+      "total_lines": 3567,
+      "code_lines": 2569,
+      "comment_lines": 444,
+      "blank_lines": 554,
+      "languages": [
+        "C/C++ Header",
+        "Text",
+        "C++",
+        "Python",
+        "Markdown"
+      ]
+    },
+    "server": {
+      "files": 3,
+      "total_lines": 522,
+      "code_lines": 347,
+      "comment_lines": 70,
+      "blank_lines": 105,
+      "languages": [
+        "C/C++ Header",
+        "C++"
+      ]
+    },
+    "common": {
+      "files": 3,
+      "total_lines": 35602,
+      "code_lines": 23219,
+      "comment_lines": 7510,
+      "blank_lines": 4873,
+      "languages": [
+        "C/C++ Header",
+        "C++ Header"
+      ]
+    },
+    "log": {
+      "files": 5,
+      "total_lines": 938,
+      "code_lines": 611,
+      "comment_lines": 126,
+      "blank_lines": 201,
+      "languages": [
+        "Markdown",
+        "C++",
+        "Text",
+        "C/C++ Header"
+      ]
+    },
+    "ipc": {
+      "files": 7,
+      "total_lines": 2622,
+      "code_lines": 1917,
+      "comment_lines": 305,
+      "blank_lines": 400,
+      "languages": [
+        "Markdown",
+        "C++",
+        "Text",
+        "C/C++ Header"
+      ]
+    },
+    "mcp_protocol": {
+      "files": 5,
+      "total_lines": 1445,
+      "code_lines": 992,
+      "comment_lines": 220,
+      "blank_lines": 233,
+      "languages": [
+        "Markdown",
+        "C++",
+        "Text",
+        "C/C++ Header"
+      ]
+    },
+    "client": {
+      "files": 7,
+      "total_lines": 2365,
+      "code_lines": 1719,
+      "comment_lines": 287,
+      "blank_lines": 359,
+      "languages": [
+        "Markdown",
+        "C++",
+        "Text",
+        "C/C++ Header"
+      ]
+    }
+  },
+  "git_stats": {
+    "is_git_repo": true,
+    "total_commits": 33,
+    "branches": [
+      "origin/HEAD -> origin/main",
+      "origin/main"
+    ],
+    "branch_count": 2,
+    "contributors": [],
+    "contributor_count": 0,
+    "last_commit": {
+      "hash": "257f907e837515449342390c77b849681b1b2c73",
+      "author": "wangjiandong",
+      "email": "",
+      "date": "2025-09-29 10:10:39 +0800",
+      "message": "--commit=rm doc"
+    }
+  },
+  "summary": {
+    "total_files": 52,
+    "total_lines": 50558,
+    "total_code_lines": 33850,
+    "total_comment_lines": 9383,
+    "total_blank_lines": 7325,
+    "languages_count": 7,
+    "modules_count": 9
+  }
+}
