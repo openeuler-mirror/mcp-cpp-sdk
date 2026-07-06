@@ -1,0 +1,58 @@
+Source: mcp-sdk
+Section: libs
+Priority: optional
+Maintainer: MCP SDK Team <support@mcp-sdk.com>
+Rules-Requires-Root: no
+Build-Depends: debhelper-compat (= 12),
+               cmake,
+               pkg-config,
+               libssl-dev,
+               libgtest-dev,
+               libgmock-dev
+Standards-Version: 4.6.2
+Homepage: https://github.com/mcp-sdk/cpp-mcp-sdk
+
+Package: libmcp-sdk
+Architecture: any
+Multi-Arch: same
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+ libssl3 (>= 3.0.0),
+ libc6 (>= 2.17),
+ libstdc++6 (>= 9.0.0)
+Description: MCP SDK - Model Context Protocol C++ SDK runtime libraries
+ This package provides the MCP (Model Context Protocol) C++ SDK shared libraries
+ including both client and server components. The SDK enables communication
+ between AI models and external tools through a standardized protocol.
+ .
+ Features:
+  - Client library for connecting to MCP servers
+  - Server library for implementing MCP services
+  - Support for multiple transport protocols (HTTP, HTTPS, IPC)
+  - Comprehensive logging and error handling
+  - Cross-platform compatibility
+ .
+ This package contains the shared libraries needed to run applications
+ using the MCP SDK.
+
+Package: libmcp-sdk-dev
+Architecture: any
+Multi-Arch: same
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+ libmcp-sdk (= ${binary:Version})
+Description: MCP SDK - Model Context Protocol C++ SDK development files
+ This package provides the MCP (Model Context Protocol) C++ SDK development
+ files including header files and CMake configuration files needed to
+ develop applications using the MCP SDK.
+ .
+ Features:
+  - Complete header files for both client and server APIs
+  - CMake configuration files for easy integration
+  - Example programs and documentation
+  - Cross-platform compatibility
+ .
+ This package contains the development files needed to build applications
+ using the MCP SDK.
