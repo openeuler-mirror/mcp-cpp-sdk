@@ -1,0 +1,44 @@
+#!/usr/bin/make -f
+
+export DH_VERBOSE = 1
+
+# 启用多进程编译
+# 获取CPU核心数，默认使用所有可用核心
+NUM_JOBS := $(shell nproc 2>/dev/null || echo 4)
+export MAKEFLAGS += -j$(NUM_JOBS)
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+		-DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+		-DBUILD_TESTING=OFF \
+		-DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+		-DOPENSSL_ROOT_DIR=/usr/local \
+		-DOPENSSL_INCLUDE_DIR=/usr/local/include/openssl \
+		-DOPENSSL_LIBRARIES=/usr/local/lib64 \
+		-DCMAKE_LIBRARY_PATH=/usr/local/lib64
+
+override_dh_auto_build:
+	dh_auto_build --parallel
+
+override_dh_auto_clean:
+
+
+override_dh_auto_test:
+	# 跳过测试，如果需要可以启用
+	# dh_auto_test
+
+override_dh_auto_install:
+	dh_auto_install
+	# 安装pkg-config文件
+	install -d debian/libmcp-sdk-dev/usr/lib/pkgconfig
+	install -m 644 debian/mcp-sdk.pc debian/libmcp-sdk-dev/usr/lib/pkgconfig/
+
+override_dh_shlibdeps:
+
