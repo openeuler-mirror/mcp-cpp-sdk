@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+echo "Removing MCP SDK libraries..."
+
+# 更新动态链接库缓存
+if command -v ldconfig >/dev/null 2>&1; then
+    ldconfig
+fi
+
+echo "MCP SDK libraries removed successfully."
