@@ -15,29 +15,36 @@
 #include <chrono>
 #include <iomanip>
 #include <sstream>
-#include "../common/json.hpp"
+#include "../../common/json.hpp"
+#include "../../log/include/logger.h"
 
 namespace mcp {
 
-// 日志级别
-enum class LogLevel {
-    DEBUG = 0,
-    INFO = 1,
-    WARNING = 2,
-    ERROR = 3
+// 通信模式枚举
+enum class CommunicationMode {
+    CLIENT = 0,  // 客户端模式：启动子进程并与之通信
+    SERVER = 1   // 服务端模式：作为子进程与父进程通信
 };
 
 // 管道通信配置
 struct PipeConfig {
+    CommunicationMode mode = CommunicationMode::CLIENT;
+    
+    // 客户端模式配置
     std::string command;
     std::vector<std::string> args;
     std::map<std::string, std::string> env_vars;
+    
+    // 服务端模式配置
+    std::string server_name = "mcp_server";
+    std::string server_version = "1.0.0";
+    
+    // 通用配置
     int buffer_size = 4096;
     int read_timeout_ms = 10;
     int max_retry_count = 10;
     bool enable_logging = true;
     std::string log_file_path = ""; // 空字符串表示输出到控制台
-    LogLevel log_level = LogLevel::INFO;
 };
 
 // 消息类型
@@ -58,8 +65,16 @@ struct Message {
 class MessageHandler {
 public:
     virtual ~MessageHandler() = default;
-    virtual void on_message(const Message& message) = 0;
-    virtual void on_error(const std::string& error) = 0;
+    virtual void onMessage(const Message& message) = 0;
+    virtual void onError(const std::string& error) = 0;
+};
+
+// 服务端请求处理器接口
+class ServerRequestHandler {
+public:
+    virtual ~ServerRequestHandler() = default;
+    virtual std::string handleRequest(const std::string& method, const std::string& params, const std::string& request_id) = 0;
+    virtual void handleNotification(const std::string& method, const std::string& params) = 0;
 };
 
 // 管道通信核心类
@@ -71,58 +86,64 @@ public:
     // 启动和停止
     bool start(const PipeConfig& config);
     void stop();
-    bool is_running() const;
+    bool isRunning() const;
 
     // 消息发送
-    bool send_message(const std::string& message);
-    std::future<std::string> send_request(const std::string& request, int timeout_seconds = 60);
+    bool sendMessage(const std::string& message);
+    std::future<std::string> sendRequest(const std::string& request, int timeout_seconds = 60);
 
     // 消息处理
-    void set_message_handler(std::shared_ptr<MessageHandler> handler);
+    void setMessageHandler(std::shared_ptr<MessageHandler> handler);
+    
+    // 服务端模式专用方法
+    void setServerRequestHandler(std::shared_ptr<ServerRequestHandler> handler);
+    bool sendResponse(const std::string& request_id, const std::string& result);
+    bool sendError(const std::string& request_id, int error_code, const std::string& error_message);
+    bool sendNotification(const std::string& method, const std::string& params);
     
     // 直接获取消息
-    bool has_message() const;
-    Message get_message();
-    std::vector<Message> get_all_messages();
+    bool hasMessage() const;
+    Message getMessage();
+    std::vector<Message> getAllMessages();
 
     // 直接获取结果
-    bool has_result() const;
-    std::string get_result();
-    std::vector<std::string> get_all_results();
+    bool hasResult() const;
+    std::string getResult();
+    std::vector<std::string> getAllResults();
 
     // 进程管理
-    int get_process_id() const;
-    bool is_process_alive() const;
-    
-    // 日志功能
-    void log(LogLevel level, const std::string& message);
-    void set_log_level(LogLevel level);
-    void set_log_file(const std::string& file_path);
-    void enable_logging(bool enable);
+    int getProcessId() const;
+    bool isProcessAlive() const;
 
 private:
     // 平台相关实现
-    bool create_pipes();
-    void close_pipes();
-    bool start_process();
-    void stop_process();
+    bool createPipes();
+    void closePipes();
+    bool startProcess();
+    void stopProcess();
     
     // 读取线程
-    void read_thread_func();
-    void process_message(const std::string& line);
+    void readThreadFunc();
+    void processMessage(const std::string& line);
     
     // 请求-响应管理
-    std::string generate_request_id();
-    void handle_response(const std::string& id, const std::string& content);
-    void handle_error(const std::string& id, const std::string& error);
+    std::string generateRequestId();
+    void handleResponse(const std::string& id, const std::string& content);
+    void handleError(const std::string& id, const std::string& error);
+    
+    // 服务端模式处理
+    void handleServerRequest(const nlohmann::json& request);
+    void handleServerNotification(const nlohmann::json& notification);
+    bool initializeServerMode();
 
     // 平台相关实现
-    bool create_pipes_impl();
-    void close_pipes_impl();
-    bool start_process_impl();
-    void stop_process_impl();
-    ssize_t read_impl(char* buffer, size_t size);
-    ssize_t write_impl(const char* buffer, size_t size);
+    bool createPipesImpl();
+    void closePipesImpl();
+    void closeStdinWriteEnd();  // 关闭stdin写入端，用于通知子进程EOF
+    bool startProcessImpl();
+    void stopProcessImpl();
+    ssize_t readImpl(char* buffer, size_t size);
+    ssize_t writeImpl(const char* buffer, size_t size);
 
 private:
     PipeConfig config_;
@@ -153,17 +174,12 @@ private:
     mutable std::mutex result_mutex_;
     std::queue<std::string> result_queue_;
     
-    // 日志相关
-    mutable std::mutex log_mutex_;
-    std::ofstream log_file_;
-    LogLevel current_log_level_;
-    bool logging_enabled_;
-    std::string log_file_path_;
+    // 服务端模式相关
+    std::shared_ptr<ServerRequestHandler> server_request_handler_;
+    std::atomic<bool> server_mode_;
     
     // 子进程输出处理
-    void log_subprocess_output(const std::string& output, const std::string& source = "subprocess");
-    std::string get_timestamp() const;
-    std::string log_level_to_string(LogLevel level) const;
+    void printSubprocessOutput(const std::string& output, const std::string& source = "subprocess");
 };
 
 } // namespace mcp
